@@ -1,6 +1,6 @@
 # A Transformer-Based Voice Activity Detector
 
-This repo contains the code to evaluate a two-class voice activity detector (VAD), which has been finetuned from the 300 million parameter variant `Wav2Vec2-XLS-R`. Use of this VAD may be cited as follows:
+This repo contains the code to evaluate a two-class voice activity detector (VAD), which has been finetuned from the 300 million parameter variant of `Wav2Vec2-XLS-R`. Use of this VAD may be cited as follows:
 
 ```
 @inproceedings{soapiesvad,
@@ -42,6 +42,9 @@ segments/
     * Contains the YouTube unique ID (i.e. `https://www.youtube.com/watch?v={ID}`) of the files that were used for training (`trn.lst`), development (`dev.lst`), and testing (`tst.lst`). The availability of these files, however, is not under our control and constantly changes.
  * `model_*/`
     * The weights for the transformer fine-tuned on the soapies data is stored in `model_soapies/` and in `model_ava/` for the transformer finetuned on the AVA-speech dataset.
+    * In this repo the model binaries are saved via GIT LFS, [see docs for install](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage).
+ * `environment.yml`
+    * In order to run the scripts in the repo, we've included a conda environment which can be installed by running `conda env create -f environment.yml`. Once the environment installs, it can be activated by `conda activate vad`.
 
 
 ## Scripts
@@ -93,7 +96,7 @@ The sample above was taken from the AVA-speech development set, if run as mentio
     bash run_segment.sh
     ```
 
- 2. Then regenerate the false positive and true positive rates across the development set (saved in `transformer_scores/dev/scores/`) the by running:
+ 2. Then regenerate the false positive and true positive rates across the development set (saved in `transformer_scores/dev/scores/`) by running:
 
     ```
     python evaluate.py
